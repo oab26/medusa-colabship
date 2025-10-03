@@ -13,7 +13,7 @@ import { createVendorAdminStep } from "./steps/create-vendor-admin"
 export interface CreateVendorWorkflowInput {
   name: string
   handle?: string
-  logo_url?: string
+  logo?: string
   admin: {
     email: string
     first_name?: string
@@ -28,7 +28,7 @@ export const createVendorWorkflow = createWorkflow(
     const vendor = createVendorStep({
       name: input.name,
       handle: input.handle,
-      logo: input.logo_url,
+      logo: input.logo,
     })
 
     const vendorAdminData = transform({

@@ -5,7 +5,7 @@ const Vendor = model.define("vendor", {
   id: model.id().primaryKey(),
   handle: model.text().unique(),
   name: model.text(),
-  logo_url: model.text().nullable(),
+  logo: model.text().nullable(),
   admins: model.hasMany(() => VendorAdmin, {
     mappedBy: "vendor",
   }),

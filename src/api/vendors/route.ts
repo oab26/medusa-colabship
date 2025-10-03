@@ -6,7 +6,7 @@ import { createVendorWorkflow } from "../../workflows/marketplace/create-vendor"
 export const PostVendorCreateSchema = z.object({
   name: z.string(),
   handle: z.string().optional(),
-  logo_url: z.string().optional(),
+  logo: z.string().optional(),
   admin: z.object({
     email: z.string(),
     first_name: z.string().optional(),
