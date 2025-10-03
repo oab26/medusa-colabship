@@ -3,9 +3,9 @@ import { MARKETPLACE_MODULE } from "../../../../modules/marketplace"
 import MarketplaceModuleService from "../../../../modules/marketplace/service"
 
 export interface CreateVendorInput {
-  handle: string
   name: string
-  logo_url?: string
+  handle?: string
+  logo?: string
 }
 
 export const createVendorStep = createStep(
