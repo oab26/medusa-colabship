@@ -193,9 +193,7 @@ This phase focuses on making our implementation match the official Medusa market
 - The implementation maintains compatibility with VibeSdk integration requirements
 
 ### Known Issues:
-1. **Vendor Products Query Error**: The `/vendors/products` endpoint throws an error because the Vendor model needs explicit `products` and `orders` relationship fields added to work with Query. The links exist but Query requires the relationship to be defined in the model.
-   - **Solution**: Add `products` and `orders` relationships to Vendor model using `model.manyToMany()` or similar
-   - **Priority**: Medium - Vendor product/order management is functional through other means
+~~1. **Vendor Products Query Error**: Fixed! The issue was incorrect link definitions.~~
 
 ### Successfully Working:
 - ✅ Vendor creation with registration flow
@@ -203,6 +201,15 @@ This phase focuses on making our implementation match the official Medusa market
 - ✅ All workflows execute correctly
 - ✅ Database migration applied
 - ✅ All files aligned with official example
+- ✅ **Vendor products endpoint** (`GET /vendors/products`) - Fixed!
+- ✅ **Vendor orders endpoint** (`GET /vendors/orders`) - Fixed!
+
+### Fix Applied (2025-10-03):
+**Issue**: Link definitions were missing `.id` on linkable references
+**Solution**: Updated both link files:
+- `src/links/vendor-product.ts` - Added `.id` and proper object format
+- `src/links/vendor-order.ts` - Added `.id` on linkable reference
+**Result**: All vendor endpoints now working correctly ✅
 
 ---
 
