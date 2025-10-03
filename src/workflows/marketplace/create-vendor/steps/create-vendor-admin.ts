@@ -60,7 +60,7 @@ export const createVendorAdminStep = createStep(
     const authModuleService = container.resolve(Modules.AUTH)
 
     if (rollbackData.authIdentityId) {
-      await authModuleService.deleteAuthIdentities(rollbackData.authIdentityId)
+      await authModuleService.deleteAuthIdentities([rollbackData.authIdentityId])
     }
 
     if (rollbackData.vendorAdminId) {

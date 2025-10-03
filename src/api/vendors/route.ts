@@ -4,16 +4,14 @@ import { createVendorWorkflow } from "../../workflows/marketplace/create-vendor"
 export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
   try {
     const body = req.body as Record<string, unknown>
-    const {
-      handle,
-      name,
-      logo_url,
-      admin_email,
-      admin_password,
-      admin_first_name,
-      admin_last_name,
-      metadata,
-    } = body
+    const handle = body.handle as string
+    const name = body.name as string
+    const logo_url = body.logo_url as string | undefined
+    const admin_email = body.admin_email as string
+    const admin_password = body.admin_password as string
+    const admin_first_name = body.admin_first_name as string
+    const admin_last_name = body.admin_last_name as string
+    const metadata = body.metadata as Record<string, unknown> | undefined
 
     if (!handle || !name || !admin_email || !admin_password || !admin_first_name || !admin_last_name) {
       return res.status(400).json({
