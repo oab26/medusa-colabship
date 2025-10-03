@@ -30,13 +30,14 @@ export const createVendorAdminStep = createStep(
       vendor_id: input.vendorId,
     })
 
-    const authIdentity = await authModuleService.create({
-      provider: "emailpass",
-      provider_metadata: {
-        email: input.email,
-        password: input.password,
+    const authIdentity = await authModuleService.createAuthIdentities({
+      provider_identities: [{
+        provider: "emailpass",
+        entity_id: input.email,
+      }],
+      app_metadata: {
+        user_id: vendorAdmin.id,
       },
-      entity_id: vendorAdmin.id,
     })
 
     const result: VendorAdminOutput = {
@@ -59,7 +60,7 @@ export const createVendorAdminStep = createStep(
     const authModuleService = container.resolve(Modules.AUTH)
 
     if (rollbackData.authIdentityId) {
-      await authModuleService.delete(rollbackData.authIdentityId)
+      await authModuleService.deleteAuthIdentities(rollbackData.authIdentityId)
     }
 
     if (rollbackData.vendorAdminId) {
