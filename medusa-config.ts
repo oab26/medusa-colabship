@@ -16,5 +16,10 @@ module.exports = defineConfig({
       ssl: false,
       sslmode: "disable",
     },
-  }
+  },
+  modules: [
+    {
+      resolve: "./src/modules/marketplace",
+    },
+  ],
 })
