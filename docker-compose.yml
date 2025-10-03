@@ -7,9 +7,10 @@ services:
     environment:
       POSTGRES_DB: medusa-store
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-SuperSecure123!DbPassword}
+    # DO NOT expose port publicly - only internal Docker network
+    # ports:
+    #   - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
