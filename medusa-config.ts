@@ -17,6 +17,14 @@ module.exports = defineConfig({
       sslmode: "disable",
     },
   },
+  admin: {
+    backendUrl: process.env.BACKEND_URL || "https://admin.colabship.com",
+    vite: () => ({
+      server: {
+        allowedHosts: ['admin.colabship.com', '.colabship.com', 'localhost'],
+      },
+    }),
+  },
   modules: [
     {
       resolve: "./src/modules/marketplace",
