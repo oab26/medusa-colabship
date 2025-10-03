@@ -4,11 +4,11 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /server
 
-# Copy package files and yarn config
-COPY package.json yarn.lock .yarnrc.yml ./
+# Copy package files
+COPY package.json yarn.lock ./
 
-# Install all dependencies using yarn
-RUN yarn install
+# Install all dependencies using npm
+RUN npm install
 
 # Copy source code
 COPY . .
